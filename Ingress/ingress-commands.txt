@@ -1,0 +1,48 @@
+ingress 
+https://kubernetes.github.io/ingress-nginx/deploy/
+  773  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+  774  kubectl create deployment demo --image=httpd --port=80
+  775  kubectl expose deployment demo
+  776  kubectl create ingress demo-localhost --class=nginx   --rule=demo.localdev.me/*=demo:80
+  777  kubectl get svc
+  778  kubectl get svc -n ingress-nginx
+  779  kubectl get ingress
+  780  kubectl edit demo-l0calhost
+  781  kubectl edit demo-localhost
+  782  kubectl edit ingress/demo-localhost
+  783  kubectl apply -f sample-application-2.yaml
+  784  kubectl edit ingress/demo-localhost
+  785  kubectl delete ingress/demo-localhost
+  786  vi path-ingress.yaml
+  787  kubectl apply -f path-ingress.yaml
+  788  vi path-ingress.yaml
+  789  kubectl apply -f path-ingress.yaml
+  790  vi path-ingress.yaml
+  791  cp path-ingress.yaml ingress.yaml
+  792  kubectl apply -f sample-application-
+  793  kubectl apply -f sample-application-1.yaml
+  794  vi path-ingress.yaml
+  795  kubectl apply -f path-ingress.yaml
+  796  vi ingress.yaml
+  797  kubectl apply -f ingress.yaml
+  798  vi sample-application-1.yaml
+  799  vi ingress.yaml
+  800  kubectl delete ns production
+  801  kubectl apply -f sample-application-1.yaml
+  802  kubectl get ingress
+  803  kubectl get ingress -n dev
+  804  kubectl edit ingress flask-blog-ingress -n dev
+  805  mv ingress.yaml ingress-1.yaml
+  806  mv ingress.yaml ingress-path.yaml
+  807  mv path-ingress.yaml ingress.yaml
+  808  cat ingress
+  809  cat ingress.yaml
+  810  vi ingress.yaml
+  811  kubectl apply -f ingress
+  812  kubectl apply -f ingress.yaml
+  813  kubectl get ingress -n dev
+  814  kubectl get pods -n dev
+  815  kubectl get svc -n dev
+  816  vi ingress-1.yaml
+  817  kubectl apply -f ingress-1.yaml
+  818  history
