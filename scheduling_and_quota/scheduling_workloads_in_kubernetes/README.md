@@ -45,7 +45,7 @@ Labels:             alpha.eksctl.io/cluster-name=201-cluster-1
  - In order to assign a Pod to the node with the label we just added, you need to specify a nodeSelector field in the PodSpec. Please check and apply the following YAML manifest
  
  ```
- $ kubectl apply -f httpd-pod.yaml
+ $ kubectl apply -f nodeselector.yaml
 pod/httpd created
 ```
 
