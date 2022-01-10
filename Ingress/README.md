@@ -14,7 +14,7 @@ Deploying Ingress Controller to Kubernetes Cluster
  
 $ kubectl get services -n ingress-nginx
 
-Incase of on-prem deployment Ingress service can be exposed using NodePort or by pointing LoadBalancer
+Ingress service can be exposed using NodePort or by exposing as LoadBalancer in Public Cloud.
 
 ### Simple Ingress Example
 
@@ -35,8 +35,8 @@ Run a application Pod using `sample-application-dotnet.yaml`, this will create a
 ## Apply Ingress
 Refer `ingress-dotnet.yaml`
 
-1. Edit and change the hostname of the ingress to your desired hostname
-2. Point the hostname to the loadbalancer IP with respective to DNS
+1. Edit and change the hostname of the ingress to your desired hostname(For this example use the CNAME address provided by LoadBalancer to test)
+2. Map the hostname to the loadbalancer IP with  DNS
 3. Verify the routes
 
     $ kubectl apply -f ingress-dotnet.yaml
@@ -50,7 +50,7 @@ Note:- Incase of any validation issue, please execute the following command
 
 ### Output
 
-The application will be served at http://<hostname>:80
+The application will be served at http://{hostname}:80
 
 ## Ingress Types
 The above Ingress only points to one application Service. For serving multiple application. Ingress can be used with
@@ -75,15 +75,15 @@ Run a application Pod using `sample-application-flask.yaml`, this will create an
 ## Apply Ingress
 Refer `ingress-flask.yaml`
 
-1. Edit and change the hostname of the ingress to your desired hostname
-2. Point the hostname to the loadbalancer IP with respective to DNS
+1. Edit and change the hostname of the ingress to your desired hostname(For this example use the CNAME address provided by LoadBalancer to test)
+2. Map the hostname to the loadbalancer IP with  DNS
 3. Verify the routes
 
     $ kubectl apply -f ingress-flask.yaml
 -----
 ### Output
 
-The application will be served at http://<hostname>:80/demo
+The application will be served at http://{hostname}:80/demo
 
 
 ### Cleanup
