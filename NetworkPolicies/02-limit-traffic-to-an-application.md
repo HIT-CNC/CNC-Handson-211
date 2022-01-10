@@ -8,15 +8,14 @@ certain Pods.
   to use it.
 - Restrict connections to a database only to the application using it.
 
-![Diagram of LIMIT traffic to an application policy](img/2.gif)
 
 ### Example
 
 Suppose your application is a REST API server, marked with labels `app=bookstore` and `role=api`:
 
-    kubectl run --generator=run-pod/v1 apiserver --image=nginx --labels app=bookstore,role=api --expose --port 80
+    kubectl run  apiserver --image=nginx --labels app=bookstore,role=api --expose --port 80
 
-Save the following NetworkPolicy to `api-allow.yaml` to restrict the access
+Apply the following NetworkPolicy to `api-allow.yaml` to restrict the access
 only to other pods (e.g. other microservices) running with label `app=bookstore`:
 
 
@@ -29,7 +28,7 @@ networkpolicy "api-allow" created
 
 Test the Network Policy is **blocking** the traffic, by running a Pod without the `app=bookstore` label:
 
-    $ kubectl run --generator=run-pod/v1 test-$RANDOM --rm -i -t --image=alpine -- sh
+    $ kubectl run test-$RANDOM --rm -i -t --image=alpine -- sh
     / # wget -qO- --timeout=2 http://apiserver
     wget: download timed out
 
@@ -37,7 +36,7 @@ Traffic is blocked!
 
 Test the Network Policy is **allowing** the traffic, by running a Pod with the `app=bookstore` label:
 
-    $ kubectl run --generator=run-pod/v1 test-$RANDOM --rm -i -t --image=alpine --labels app=bookstore,role=frontend -- sh
+    $ kubectl run test-$RANDOM --rm -i -t --image=alpine --labels app=bookstore,role=frontend -- sh
     / # wget -qO- --timeout=2 http://apiserver
     <!DOCTYPE html>
     <html><head>

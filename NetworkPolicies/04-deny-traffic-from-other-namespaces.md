@@ -13,14 +13,13 @@ pod deployed to.
   namespaces and you would like to block traffic coming from outside a
   namespace.
 
-![Diagram of DENY all traffic from other namespaces policy](img/4.gif)
 
 ### Example
 
 Start a web service in namespace default:
 
 ```sh
-$ kubectl run --generator=run-pod/v1 web --namespace default --image=nginx \
+$ kubectl run  web --namespace default --image=nginx \
 --labels=app=web --expose --port 80
 ```
 
@@ -47,7 +46,7 @@ Query this web service from the `foo` namespace:
 
 ```sh
 $ kubectl create namespace foo
-$ kubectl run --generator=run-pod/v1 test-$RANDOM --namespace=foo --rm -i -t --image=alpine -- sh
+$ kubectl run  test-$RANDOM --namespace=foo --rm -i -t --image=alpine -- sh
 / # wget -qO- --timeout=2 http://web.default
 wget: download timed out
 ```
@@ -57,7 +56,7 @@ It blocks the traffic from `foo` namespace!
 Any pod in `default` namespace should work fine:
 
 ```sh
-$ kubectl run --generator=run-pod/v1 test-$RANDOM --namespace=default --rm -i -t --image=alpine -- sh
+$ kubectl run  test-$RANDOM --namespace=default --rm -i -t --image=alpine -- sh
 / # wget -qO- --timeout=2 http://web.default
 <!DOCTYPE html>
 <html>

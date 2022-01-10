@@ -24,7 +24,7 @@ Note a few things about this manifest:
 - List of `egress` rules is an empty array: This causes all traffic (including
   DNS resolution) to be dropped if it’s originating from Pods in `default`.
 
-Save this manifest to `default-deny-all-egress.yaml` and apply:
+Check this manifest to `default-deny-all-egress.yaml` and apply:
 
 ```sh
 $ kubectl apply -f default-deny-all-egress.yaml
