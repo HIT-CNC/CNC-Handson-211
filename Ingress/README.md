@@ -40,7 +40,12 @@ Refer `ingress-dotnet.yaml`
 3. Verify the routes
 
     $ kubectl apply -f ingress-dotnet.yaml
-   
+
+Note:- Incase of any validation issue, please execute the following command
+$ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+$ kubectl delete ValidatingWebhookConfiguration  vpc-resource-validating-webhook
+
+
 ### Output
 
 The application will be served at http://<hostname>:80
