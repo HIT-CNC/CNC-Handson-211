@@ -82,5 +82,5 @@ The application will be served at http://<hostname>:80/demo
 ### Cleanup
 
 ```sh
-kubectl delete ns dev ingress-nginx
+kubectl delete ns dev
 ```
