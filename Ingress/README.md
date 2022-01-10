@@ -1,4 +1,4 @@
-#Ingress
+### Ingress
 
 Deploying Ingress Controller to Kubernetes Cluster
 
@@ -42,8 +42,10 @@ Refer `ingress-dotnet.yaml`
     $ kubectl apply -f ingress-dotnet.yaml
 
 Note:- Incase of any validation issue, please execute the following command
-$ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
-$ kubectl delete ValidatingWebhookConfiguration  vpc-resource-validating-webhook
+
+
+`$ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission`
+`$ kubectl delete ValidatingWebhookConfiguration  vpc-resource-validating-webhook`
 
 
 ### Output
