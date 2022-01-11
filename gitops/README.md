@@ -10,7 +10,7 @@ As we already learned, Kubernetes deployment is all based on the manifests in YA
 
 ### GitOps principles
 
-As we do not have enough time to cover all deeply, we will introduce core concepts here. If you want to understand **GitOps** more deeply, [this document](https://www.weave.works/technologies/gitops/) is highly recommended.
+As we do not have enough time to cover all, we will introduce core concepts here. If you want to understand **GitOps** more deeply, [this document](https://www.weave.works/technologies/gitops/) is highly recommended.
 
 #### 1. The entire system described declaratively
 #### 2. The canonical desired system state versioned in Git
