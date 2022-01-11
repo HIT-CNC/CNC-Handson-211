@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: flask-blog
+  name: flask-blog
+  namespace: dev
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+    name: http
+  - port: 9200
+    protocol: TCP
+    name: metrics
+  selector:
+    app: flask-blog
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flask-blog
+  name: flask-blog
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-blog
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: flask-blog
+    spec:
+      containers:
+      - name: flask
+        image: nashadabdulrahiman/flask_blog:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /app/data
+          name: mypd
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: mypd
+        persistentVolumeClaim:
+          claimName: flask-data-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: flask-data-claim
+   namespace: dev
+spec:
+   accessModes:
+    - ReadWriteOnce
+   resources:
+     requests:
+       storage: 2Gi
+   storageClassName: gp2
