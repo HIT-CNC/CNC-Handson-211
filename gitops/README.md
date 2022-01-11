@@ -14,8 +14,8 @@ As we do not have enough time to cover all, we will introduce core concepts here
 
 #### 1. The entire system described declaratively
 #### 2. The canonical desired system state versioned in Git
-#### 3. Approved changes that can be automatically applied to the system.
-#### 4. Software agents to ensure correctness and alert on divergence.
+#### 3. Approved changes that can be automatically applied to the system
+#### 4. Software agents to ensure correctness and alert on divergence
 
 This basically means stored code in Git is **the declared/desired** state of your infra and all change management and its ecosystem is surrounded by that.
 
