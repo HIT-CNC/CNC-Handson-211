@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  project: monitoring
+  source:
+    chart: prometheus-community/prometheus
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 15.0.2
+    helm:
+      releaseName: prometheus
+      ## You can override "values" using this field
+      values: |
+        alertmanager:
+          persistentVolume:
+            storageClass: gp2
+        server:
+          persistentVolume:
+            storageClass="gp2"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
