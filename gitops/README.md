@@ -66,10 +66,10 @@ If you use GitOps, you no longer need to care about ingress traffic management i
 
 You can also do it in your environment, but for now we perform the demonstration.
 
-Login to the bastion with port forwarding
+Login to the bastion with port forwarding. Port forward is not required if run `kubectl` and `helm` locally.
 
-```
-ssh -L localhost:8080:localhost:8080 ec2-user@your-bastion-ip
+```sh
+$ ssh -L localhost:8080:localhost:8080 ec2-user@your-bastion-ip
 ```
 
 Install helm if not installed.
@@ -82,7 +82,7 @@ Install Argo CD in argocd namespace.
 
 ```sh
 $ helm repo add argo https://argoproj.github.io/argo-helm
-$ helm install argocd --create-namespace -n argocd argo/argo-cd
+$ helm upgrade --install argocd --create-namespace -n argocd argo/argo-cd
 ```
 
 You can get the login URL and password information with the following commands.
