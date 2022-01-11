@@ -28,13 +28,13 @@ Run a application Pod using `sample-application-flask.yaml`, this will create an
 ## Apply AutoScaler rules
 
 
-`$ kubectl autoscale deployment flask-blog -n dev --cpu-percent=50 --min=3 --max=10`
+`$ kubectl autoscale deployment flask-blog -n dev --cpu-percent=20 --min=3 --max=10`
 
 `$kubectl get hpa`
 
 ## Increase the load 
 
-`$ kubectl run -i --tty load-generator -n dev --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://flask-blog; done"`
+`$ kubectl run -i --tty load-generator -n dev --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.000000001; do wget -q -O- http://flask-blog:8000; done"`
 
 ## Inspect
 
