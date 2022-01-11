@@ -26,7 +26,6 @@ Run a application Pod using `sample-application-stress.yaml`, this will create a
 
 ## Apply AutoScaler rules
 
-
 `$ kubectl autoscale deployment php-apache  --cpu-percent=50 --min=3 --max=10`
 
 `$kubectl get hpa`
