@@ -41,6 +41,8 @@ Ref. https://argo-cd.readthedocs.io/en/stable/
 
 #### Flux CD
 
+![](https://fluxcd.io/img/diagrams/gitops-toolkit.png)
+
 Flux CD is a GitOps engine created by Weaveworks. So in the terms of "who made it", this looks like the most desired tool that meets "GitOps" principles.
 
 There are major differences in Argo and Flux but so far there are more pulbic references with Argo but not Flux. You can use either one as long as they fulfil your requirement.
